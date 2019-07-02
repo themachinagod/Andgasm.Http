@@ -1,11 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.0.2</Version>
+    <Authors>Danny Brown</Authors>
+    <Company>Andgasm Software</Company>
+    <Description>Simple library to wrap the HttpClient making async requests a simple method call, handles request/response serialization.</Description>
+    <RepositoryUrl>https://github.com/themachinagod/Andgasm.Http</RepositoryUrl>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageTags>Http, HttpClient, Lib, Request, Response, Json, REST</PackageTags>
+    <Copyright>Andgasm Software</Copyright>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
   </ItemGroup>
 
 </Project>
