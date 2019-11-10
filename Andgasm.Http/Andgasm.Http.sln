@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2041
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Andgasm.Http", "Andgasm.Http\Andgasm.Http.csproj", "{9F692C91-7023-4E3D-ABC3-85463FE69721}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Andgasm.Http", "Andgasm.Http\Andgasm.Http.csproj", "{9F692C91-7023-4E3D-ABC3-85463FE69721}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Andgasm.Http.Interfaces", "Andgasm.Http.Interfaces\Andgasm.Http.Interfaces.csproj", "{319D66B4-8109-42E5-B3D5-09868726FF4E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{9F692C91-7023-4E3D-ABC3-85463FE69721}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F692C91-7023-4E3D-ABC3-85463FE69721}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F692C91-7023-4E3D-ABC3-85463FE69721}.Release|Any CPU.Build.0 = Release|Any CPU
+		{319D66B4-8109-42E5-B3D5-09868726FF4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{319D66B4-8109-42E5-B3D5-09868726FF4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{319D66B4-8109-42E5-B3D5-09868726FF4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{319D66B4-8109-42E5-B3D5-09868726FF4E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
