@@ -64,7 +64,7 @@ namespace Andgasm.Http
 
         public HttpRequestBuilder AddUserAgent(string useragent)
         {
-            this.useragent = acceptHeader;
+            this.useragent = useragent;
             return this;
         }
 
@@ -131,10 +131,10 @@ namespace Andgasm.Http
             request.Headers.Accept.Clear();
             if (this.content != null) request.Content = this.content;
             if (!string.IsNullOrWhiteSpace(this.bearerToken)) request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", this.bearerToken);
-            if (!string.IsNullOrWhiteSpace(this.useragent)) request.Headers.UserAgent.Add(new ProductInfoHeaderValue(this.useragent));
+            if (!string.IsNullOrWhiteSpace(this.useragent)) request.Headers.Add("User-Agent", this.useragent);
             if (!string.IsNullOrWhiteSpace(this.host)) request.Headers.Host = this.host;
             if (!string.IsNullOrWhiteSpace(this.referer)) request.Headers.Referrer = new Uri(this.referer);
-            if (!string.IsNullOrWhiteSpace(this.acceptHeader)) request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(this.acceptHeader));
+            if (!string.IsNullOrWhiteSpace(this.acceptHeader)) request.Headers.Add("Accept", this.acceptHeader);
 
             foreach (var hi in headercollection) request.Headers.Add(hi.Key, hi.Value);
             foreach (var hi in cookiecollection) request.Headers.Add(hi.Key, hi.Value);
