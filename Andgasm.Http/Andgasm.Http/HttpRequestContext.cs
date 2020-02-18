@@ -11,7 +11,6 @@ namespace Andgasm.Http
         public string Accept { get; set; }
         public string UserAgent { get; set; }
         public string Referer { get; set; }
-        public List<string> SetCookies { get; set; }
         public Dictionary<string, string> Headers { get; set; }
         public Dictionary<string, string> Cookies { get; set; }
 
@@ -20,7 +19,7 @@ namespace Andgasm.Http
             Timeout = 60000;
             Headers = new Dictionary<string, string>();
             Cookies = new Dictionary<string, string>();
-            SetCookies = new List<string>();
+            Accept = "application/json";
         }
 
         public void AddCookie(string n, string v)

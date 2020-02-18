@@ -10,7 +10,6 @@ namespace Andgasm.Http.Interfaces
         string Accept { get; set; }
         string UserAgent { get; set; }
         string Referer { get; set; }
-        List<string> SetCookies { get; set; }
         Dictionary<string, string> Headers { get; set; }
         Dictionary<string, string> Cookies { get; set; }
 

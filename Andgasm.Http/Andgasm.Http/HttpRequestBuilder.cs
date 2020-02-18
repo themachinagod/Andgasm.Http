@@ -19,7 +19,6 @@ namespace Andgasm.Http
         private string host = "";
         private string referer = "";
         private string acceptHeader = "application/json";
-        private bool setgzip = false;
         private TimeSpan timeout = new TimeSpan(0, 0, 30);
 
         private Dictionary<string, string> headercollection = new Dictionary<string, string>();
@@ -81,12 +80,6 @@ namespace Andgasm.Http
             return this;
         }
 
-        public HttpRequestBuilder AddGzipCompression()
-        {
-            this.setgzip = true;
-            return this;
-        }
-
         public HttpRequestBuilder AddHeaders(Dictionary<string, string> headercollection)
         {
             this.headercollection = headercollection;
@@ -115,7 +108,6 @@ namespace Andgasm.Http
                 builder.AddAcceptHeader(context.Accept);
                 builder.AddUserAgent(context.UserAgent);
                 builder.AddReferer(context.Referer);
-                builder.AddGzipCompression();
                 builder.AddHeaders(context.Headers);
                 builder.AddCookies(context.Cookies);
             }
@@ -123,7 +115,7 @@ namespace Andgasm.Http
         }
 
         public async Task<HttpResponseMessage> SendAsync()
-        {
+        {   
             var request = new HttpRequestMessage
             {
                 Method = this.method,
@@ -140,9 +132,15 @@ namespace Andgasm.Http
             foreach (var hi in headercollection) request.Headers.Add(hi.Key, hi.Value);
             foreach (var hi in cookiecollection) request.Headers.Add(hi.Key, hi.Value);
 
-            var client = new HttpClient();
-            client.Timeout = this.timeout;
-            if (this.setgzip) client.DefaultRequestHeaders.AcceptEncoding.Add(new StringWithQualityHeaderValue("gzip"));
+            var handler = new HttpClientHandler();
+            if (handler.SupportsAutomaticDecompression)
+            {
+                handler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+            }
+            var client = new HttpClient(handler);
+            client.DefaultRequestHeaders.Connection.Add("Keep-Alive");
+            client.DefaultRequestHeaders.ConnectionClose = false;
+            client.Timeout = timeout;
 
             return await client.SendAsync(request);
         }
